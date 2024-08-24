@@ -1,0 +1,10 @@
+__pycache__
+app/build
+
+*.wav
+ideas.md
+site-packages
+pyrightconfig.json
+dist/
+.env
+.zed/

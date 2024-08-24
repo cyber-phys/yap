@@ -1,0 +1,33 @@
+[project]
+name = "yap"
+version = "0.0.0"
+description = "A simple tts client"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "simpleaudio>=1.0.4",
+    "pandas>=2.2.2",
+    "faster-whisper>=1.0.3",
+    "pypinyin>=0.52.0",
+    "hangul-romanize>=0.1.0",
+    "deepspeed>=0.15.0",
+    "sounddevice>=0.5.0",
+    "coqui-tts>=0.24.1",
+    "sanic>=24.6.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+yap = "yap.main:main"
+yap-server = "yap.server:main"
+[tool.hatch.envs.default]
+dependencies = [
+    "pytest",
+    "pytest-cov",
+]
+[tool.hatch.envs.default.scripts]
+yap = "python -m yap.main"
+yap-server ="python -m yap.server"
