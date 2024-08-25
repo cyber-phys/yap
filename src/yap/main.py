@@ -82,6 +82,9 @@ def finetune_model(cloned_voice_name, sample_audio_path, model_manager):
     train_csv_path = output_path / "dataset" / preprocess_result[1]
     eval_csv_path = output_path / "dataset" / preprocess_result[2]
 
+    print(f"Train CSV: {train_csv_path}")
+    print(f"Eval CSV: {eval_csv_path}")
+
     train_result = train_model(config_path=config_path, vocab_file=vocab_path, train_csv=train_csv_path, eval_csv=eval_csv_path, output_path=output_path)
     optimize_result = optimize_model(output_path)
     model_id="test"
