@@ -79,8 +79,10 @@ def finetune_model(cloned_voice_name, sample_audio_path, model_manager):
     config_path = ready_model_path / "config.json"
     speaker_path = ready_model_path / "speakers_xtts.pth"
     reference_path = ready_model_path / "reference.wav"
+    train_csv_path = output_path / "dataset" / preprocess_result[1]
+    eval_csv_path = output_path / "dataset" / preprocess_result[2]
 
-    train_result = train_model(config_path=config_path, vocab_file=vocab_path, train_csv=preprocess_result[1], eval_csv=preprocess_result[2], output_path=output_path)
+    train_result = train_model(config_path=config_path, vocab_file=vocab_path, train_csv=train_csv_path, eval_csv=eval_csv_path, output_path=output_path)
     optimize_result = optimize_model(output_path)
     model_id="test"
     # model_manager.upload_model_to_hf(f"xtts-finetune-{cloned_voice_name}", output_path)
